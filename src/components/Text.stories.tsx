@@ -6,6 +6,7 @@ export default {
   component: Text,
   args: {
     children: 'Lorem ipsum.',
+    size: 'md'
   }
 } as Meta<TextProps>
 
@@ -29,5 +30,12 @@ export const CustomComponent: StoryObj<TextProps> = {
     children: (
       <p>Testando</p>
     )
+  },
+  argTypes: {
+    children: {
+      table: {
+        disable: true,
+      }
+    }
   }
 }
