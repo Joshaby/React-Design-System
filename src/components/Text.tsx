@@ -6,14 +6,6 @@ export interface TextProps {
   size?: 'sm' | 'md' | 'lg';
   children: ReactNode;
   asChild?: boolean;
-  argTypes?: {
-    size: {
-      options: ['sm', 'md', 'lg'],
-      control: {
-        type: 'inline-radio'
-      }
-    }
-  }
 }
 
 export function Text({ size = 'md', children, asChild } : TextProps) {
@@ -28,8 +20,7 @@ export function Text({ size = 'md', children, asChild } : TextProps) {
         'text-sm': size === 'md',
         'text-md': size === 'lg',
       }
-      )}
-    >
+    )}>
       {children}
     </Comp>
   )
