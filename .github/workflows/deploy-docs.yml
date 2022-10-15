@@ -1,0 +1,30 @@
+name: Deploy Desgin System Storybook
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: yarn install --immutable --immutable-cache --check-cache
+
+      - name: Build Storybook
+        run: yarn build-storybook
+
+      - name: Deploy Storybook
+        run: yarn deploy-storybook -- --immutable --immutable-cache --check-cache --existing-output-dir=storybook-static
+        env:
+          CH_TOKEN: ${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}
