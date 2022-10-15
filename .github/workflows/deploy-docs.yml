@@ -27,4 +27,4 @@ jobs:
       - name: Deploy Storybook
         run: yarn deploy-storybook -- --immutable --immutable-cache --check-cache --existing-output-dir=storybook-static
         env:
-          CH_TOKEN: ${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}
